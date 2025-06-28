@@ -30,7 +30,6 @@ export default defineConfig([
 			prettier: prettier,
 		},
 		rules: {
-			// disable warnings, since prettier should format on save
 			'prettier/prettier': 'error',
 		},
 	},
