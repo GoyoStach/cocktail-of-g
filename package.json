@@ -7,16 +7,18 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prepare":"husky install",
+    "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "**/*": [
-        "npx prettier --write",
-        "npx eslint --fix"
+      "npx prettier --write",
+      "npx eslint --fix"
     ]
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/sitemap": "^3.4.1",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.10.1",
     "tailwindcss": "^4.1.11"

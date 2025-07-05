@@ -1,0 +1,20 @@
+---
+import CocktailLayout from '@/layouts/CocktailLayout.astro';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const cocktails = await getCollection('cocktails');
+	return cocktails.map((cocktail) => ({
+		params: { slug: cocktail.id },
+		props: cocktail,
+	}));
+}
+type Props = CollectionEntry<'cocktails'>;
+
+const cocktail = Astro.props;
+const { Content } = await render(cocktail);
+---
+
+<CocktailLayout {...cocktail.data}>
+	<Content />
+</CocktailLayout>

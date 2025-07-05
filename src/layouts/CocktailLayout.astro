@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+
+type Props = CollectionEntry<'cocktails'>['data'];
+
+const { title, description, pubDate, heroImage } = Astro.props;
+---
+
+<html lang='en'>
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+		</style>
+	</head>
+
+	<body>
+		<main class='p-2'>
+			<article>
+				<div class='hero-image'>
+					{
+						heroImage && (
+							<Image
+								width={360}
+								height={720}
+								src={heroImage}
+								alt=''
+								transition:name={`blogpost-${title.replace(/\W/g, '')}`}
+							/>
+						)
+					}
+				</div>
+				<div class='m-auto w-[720px] max-w-[calc(100%-2em)] p-4 text-gray-400'>
+					<div class='mb-4 flex flex-col gap-2 p-4 text-center leading-4'>
+						<div>
+							<FormattedDate date={pubDate} />
+						</div>
+						<h1 class='mb-2'>{title}</h1>
+						<hr />
+					</div>
+					<slot />
+				</div>
+			</article>
+		</main>
+	</body>
+</html>
