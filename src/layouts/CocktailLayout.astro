@@ -3,6 +3,8 @@ import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import ThemeScript from '../components/ThemeScript.astro';
 
 type Props = CollectionEntry<'cocktails'>['data'];
 
@@ -12,21 +14,11 @@ const { title, description, pubDate, heroImage, ingredients } = Astro.props;
 <html lang='en'>
 	<head>
 		<BaseHead title={title} description={description} />
+		<ThemeScript />
 	</head>
 
 	<body class='min-h-screen bg-gradient-to-br from-slate-50 to-orange-50'>
-		<nav class='sticky top-0 z-10 border-b border-orange-100 bg-white/80 backdrop-blur-md'>
-			<div class='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-				<div class='flex h-16 items-center justify-between'>
-					<a
-						href='/'
-						class='text-2xl font-bold text-orange-600 transition-colors hover:text-orange-700'
-					>
-						Cocktail Collection
-					</a>
-				</div>
-			</div>
-		</nav>
+		<Header currentPath='/cocktails' />
 
 		<main class='mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8'>
 			<article class='overflow-hidden rounded-2xl bg-white shadow-xl'>

@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import CocktailCard from '../components/CocktailCard.astro';
 import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import ThemeScript from '../components/ThemeScript.astro';
 
 const cocktails = await getCollection('cocktails');
 ---
@@ -9,12 +11,15 @@ const cocktails = await getCollection('cocktails');
 <html lang='en'>
 	<head>
 		<BaseHead
-			title='Cocktail Collection - Discover Amazing Cocktail Recipes'
+			title='Cocktail of G - Discover Amazing Cocktail Recipes'
 			description='Explore our curated collection of classic and modern cocktail recipes. Find your next favorite drink with detailed ingredients and instructions.'
 		/>
+		<ThemeScript />
 	</head>
 
 	<body class='min-h-screen bg-gradient-to-br from-slate-50 to-orange-50'>
+		<Header currentPath='/' />
+
 		<!-- Hero Section -->
 		<section class='relative overflow-hidden'>
 			<div class='absolute inset-0 bg-gradient-to-r from-orange-600/20 to-amber-600/20'>
