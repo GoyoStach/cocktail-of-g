@@ -12,6 +12,13 @@ const cocktails = defineCollection({
 			// Transform string to Date object
 			pubDate: z.coerce.date(),
 			heroImage: image().optional(),
+			ingredients: z.array(
+				z.object({
+					name: z.string(),
+					quantity: z.string(),
+					unit: z.string(),
+				}),
+			),
 		}),
 });
 

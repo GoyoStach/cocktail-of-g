@@ -6,7 +6,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'cocktails'>['data'];
 
-const { title, description, pubDate, heroImage } = Astro.props;
+const { title, description, pubDate, heroImage, ingredients } = Astro.props;
 ---
 
 <html lang='en'>
@@ -52,6 +52,17 @@ const { title, description, pubDate, heroImage } = Astro.props;
 							<FormattedDate date={pubDate} />
 						</div>
 						<h1 class='mb-2'>{title}</h1>
+						<ul>
+							{
+								ingredients.map((e) => (
+									<li>
+										{e.quantity}
+										{e.unit}
+										{e.name}
+									</li>
+								))
+							}
+						</ul>
 						<hr />
 					</div>
 					<slot />
